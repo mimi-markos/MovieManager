@@ -1,1 +1,1 @@
-# Movie Manager Web Application
+# Movie Manager Web Application 🎞️
