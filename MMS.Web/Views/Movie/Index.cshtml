@@ -1,0 +1,59 @@
+@model IList<Movie>
+
+<partial name="_Breadcrumbs" model=@(new [] { 
+    ("/", "Home"), 
+    ("", "Movies") 
+})>
+
+<h1 class="my-4">Movies</h1>
+
+<!-- Anchor tag to create a new movie  -->
+<a class="btn btn-sm btn-primary my-3" asp-controller="Movie" asp-action="Create">
+    <i class="bi bi-plus-square-dotted mr-2"></i>Create New
+</a> 
+
+
+<!-- Table of movies -->
+<table class="table table-striped">
+    <thead> 
+        <tr class="text-primary">
+            <th>ID</th>
+            <th>Movie Poster</th>
+            <th>Title</th>
+            <th>Director</th>
+            <th>Year</th>
+            <th>Genre</th>
+            <th>Actions</th> 
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var m in Model) {
+            <tr>
+                <td>@m.Id</td>
+                <td><img src="@m.PosterUrl" style="width:100px;"></td>
+                <td>@m.Title</td>
+                <td>@m.Director</td>
+                <td>@m.Year</td>
+                <td>@m.Genre</td>
+                <td>
+                    <!-- View link to display a movie -->
+                    <a asp-controller="Movie" asp-action="Details" asp-route-id="@m.Id" class="btn btn-sm btn-info mr-2">
+                        <i class="bi bi-film"></i>
+                    </a>
+
+                    <!-- Edit link to edit a movie -->
+                    <a asp-controller="Movie" asp-action="Edit" asp-route-id="@m.Id" class="btn btn-sm btn-primary mr-2">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+
+                    <!-- Delete link to delete a movie -->
+                    <a asp-controller="Movie" asp-action="Delete" asp-route-id="@m.Id" class="btn btn-sm btn-outline-danger mr-2">
+                        <i class="bi bi-trash"></i>
+                    </a>
+                    
+                </td>
+            </tr>
+        }
+        
+    </tbody>
+</table>

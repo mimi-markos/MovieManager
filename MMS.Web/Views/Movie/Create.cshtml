@@ -1,0 +1,29 @@
+@model Movie
+
+<partial name="_Breadcrumbs" model=@(new [] { 
+    ("/", "Home"), 
+    ("/movie", "Movies"), 
+    ("","Create") 
+})>
+
+ <h2 class="my-4">Create Movie</h2>
+
+<div class="card rounded shadow p-3">
+    <form asp-action="Create"> 
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <!-- form inputs -->
+        <partial name="_FormInputs"/>
+        
+        <!-- submit and cancel links - navigates to Index action -->
+        <div class="form-group">
+            <input type="submit" value="Publish" class="btn btn-success"/>
+            <a class="btn btn-secondary" asp-action="Index">Cancel</a>
+        </div>
+    </form>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

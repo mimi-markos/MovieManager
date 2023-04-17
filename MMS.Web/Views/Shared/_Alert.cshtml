@@ -1,0 +1,19 @@
+@{
+    <!--If alert.message tempdata exists, store value 
+    in message. Otherwise set message to null -->
+    var message = TempData["Alert.Message"] ?? null;
+    //type of alert, alerts listed in enum
+    var type = TempData["Alert.Type"] ?? null;
+    
+}
+
+<!--if there is a message return the div -->
+@if (message != null)
+{
+    <div class="alert alert-@type alert-dismissible fade show" role="alert">
+        @message
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>    
+}

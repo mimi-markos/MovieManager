@@ -1,0 +1,41 @@
+<div>
+
+<h3 class="mt-5">Reviews</h3>
+
+<!-- Review information table display for associated movie --> 
+<table class="table">
+    <thead>
+        <tr class="table-active">
+            <th>Created</th>
+            <th>Name</th>
+            <th>Comment</th>
+            <th>Rating 1-10</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var r in Model.Reviews) {
+            <tr>
+                <td>@r.CreatedOn.ToShortDateString()</td>
+                <td>@r.Name</td>
+                <td>@r.Comment</td>
+                <td>@r.Rating</td>
+                <td>
+                    <!-- navigation link to Delete Review action -->
+                    <a asp-controller="Movie" asp-action="DeleteReview" asp-route-id="@r.Id" 
+                       class="btn btn-sm btn-outline-danger mr-2"> 
+                       <i class="bi bi-trash"></i>
+                    </a>
+                    
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- navigation link to Add Review action --> 
+<a asp-action="AddReview" asp-route-id="@Model.Id" class="btn btn-sm btn-warning mr-2">
+    <i class="bi bi-plus-square-dotted mr-2"></i>Add Review
+</a>
+
+</div>

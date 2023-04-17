@@ -1,0 +1,64 @@
+@model Movie
+
+<!-- form inputs to construct a movie -->
+
+<div class="form-group">
+        <label asp-for="Title" class="control-label"></label>
+        <input asp-for="Title" class="form-control"/>
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="Director" class="control-label"></label>
+        <input asp-for="Director" class="form-control"/>
+        <span asp-validation-for="Director" class="text-danger"></span>
+    </div>
+
+    <!-- format year, duration, budget and genre input groups in single row of 4 columns -->    
+    <div class="row">
+        <div class="form-group col">
+            <label asp-for="Year" class="control-label"></label>
+            <input asp-for="Year" class="form-control"/>
+            <span asp-validation-for="Year" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col">
+            <label asp-for="Duration" class="control-label"></label>
+            <input asp-for="Duration" class="form-control"/>
+            <span asp-validation-for="Duration" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col">
+            <label asp-for="Budget" class="control-label"></label>
+            <input asp-for="Budget" class="form-control"/>
+            <span asp-validation-for="Budget" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col">
+            <label asp-for="Genre" class="control-label"></label>
+            <select asp-for="Genre" class="form-control" 
+                    asp-items="Html.GetEnumSelectList<Genre>()">
+                <option selected>Select Genre</option>
+            </select>
+            <span asp-validation-for="Genre" class="text-danger"></span>
+        </div>        
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PosterUrl" class="control-label"></label>
+        <input type="url" asp-for="PosterUrl" class="form-control"/>
+        <span asp-validation-for="PosterUrl" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Cast" class="control-label"></label>
+        <input asp-for="Cast" class="form-control"/>
+        <span asp-validation-for="Cast" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Plot" class="control-label"></label>
+        <textarea rows="5" placeholder="Enter movie plot summary..." asp-for="Plot" class="form-control"></textarea>
+        <span asp-validation-for="Plot" class="text-danger"></span>
+        <small class="text-muted">Maximum length of 500 characters.</small>
+    </div>
