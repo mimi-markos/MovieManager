@@ -1,1 +1,1 @@
-# MovieManager
+# Movie Manager Web Application
